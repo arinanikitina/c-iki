@@ -58,7 +58,6 @@ namespace ConsoleApp8
             Define<List<string>>(strings[0], strings);
 
 
-
         }
     }
 }
