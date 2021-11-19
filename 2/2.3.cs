@@ -1,4 +1,9 @@
-﻿using System;
+
+
+// Дан массив структур {x:int, y:int}. Отобразить максимальный по У элемент.
+
+
+using System;
 
 namespace ConsoleApp9
 {
