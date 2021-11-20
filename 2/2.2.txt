@@ -1,0 +1,161 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    class Worker
+    {
+        public string Name;
+        public int Salary;
+    }
+    class Number
+    {
+        public int Number1;
+        public int Number2;
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = { 1, 4, 9, 5, -6, 0, -3, -8, 2, -5 };
+            var maxElement = numbers.Max();
+            Console.WriteLine("-----|а|-----");
+            Console.WriteLine("Максимальный элемент: " + maxElement);
+
+            Console.WriteLine("-----|б|-----");
+            var maxIndex = Array.IndexOf(numbers, maxElement);
+            Console.WriteLine("Индекс максимального элемента: " + maxIndex);
+
+            Console.WriteLine("-----|д|-----");
+            Console.WriteLine("Искомые пары элементов:");
+
+            int[] array1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int[] array2 = { 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+
+            var arrayres = from a1 in array1
+                           where (a1 % 5 == 0)
+                           from a2 in array2
+                           where (a2 % 5 == 0)
+                           select new { a1, a2 };
+            
+            foreach (var c in arrayres)
+            {
+                Console.WriteLine(string.Join(" ", c.a1, c.a2));
+            }
+
+            Console.WriteLine("-----|е|-----");
+            Console.WriteLine("Отсортированный массив слов: ");
+
+            string[] words = { "кот", "подорожник", "завод", "ОТвет", "БРДМ-2 РХБ", "соЛод", "питон", "автобОт" };
+
+            IEnumerable<string> wordsResult = from i in words where (i.Contains("от") || i.Contains("оТ") || i.Contains("От") || i.Contains("ОТ")) orderby i.Substring(0, 1) ascending select i;
+            foreach (string s in wordsResult)
+            {
+                Console.WriteLine(s);
+            }
+
+            Console.WriteLine("-----|ж|-----");
+
+            string s1 = "rehgsrktje32";
+            string s2 = "23ejtkrsgher";
+            Console.WriteLine(s1 == new string(s2.Reverse().ToArray()) ? "Строка s2 является обратной строке s1" : "Строка s2 не является обратной строке s1");
+
+            Console.WriteLine("-----|з|-----");
+            Console.WriteLine("Итоговый массив:");
+
+            int[] mass = { 6, 7, 20, 5, 18, 0, 46, 31, 19, 5 };
+
+            var result = from n in mass
+                          orderby n
+                          group n by n % 2;
+
+            foreach (var q in result)
+            {
+                Console.WriteLine("-----");
+                foreach (int i in q)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+
+            Console.WriteLine("-----|и|-----");
+
+            var massiv = new List<int> { 6, 7, 20, 5, 18, 0, 46, 31, 19, 5};
+
+            var resultmass = massiv.GroupBy(t => t % 2).Select(t => new
+            {
+                Sum = t.Sum(ta => ta),
+            }).ToList();
+
+            resultmass.ForEach(r => Console.WriteLine($"Сумма: {r.Sum}"));
+
+            Console.WriteLine("-----|к|-----");
+
+            var arr = new Worker[]
+            {
+                new Worker { Name = "Петров", Salary = 100 },
+                new Worker { Name = "Сидоров", Salary = 200 },
+                new Worker { Name = "Петров", Salary = 130 },
+                new Worker { Name = "Иванов", Salary = 170 },
+                new Worker { Name = "Сидоров", Salary = 150 },
+            };
+
+            var arrresult = arr.GroupBy(t => t.Name).Select(t => new
+            {
+                Name = t.Key,
+                Amount = t.Sum(tn => tn.Salary),
+            }).ToList();
+
+            arrresult.ForEach(r => Console.WriteLine($"Имя: {r.Name} | Сумма: {r.Amount}"));
+
+            Console.WriteLine("-----|л|-----");
+
+            var collection = new List<int> { 1, 2, 4, 1, 4, 2, 2, 1, 5, 7, 9, 5, 5 };
+            Console.WriteLine("Повторяющиеся по 3 раза значения: " + string.Join(" ", collection.GroupBy(x => x).Where (x => x.Count() == 3).Select(x => x.Key)));
+
+            Console.WriteLine("-----|м|-----");
+
+            var collection2 = new Number[]
+            {
+                new Number { Number1 = 6, Number2 = 3 },
+                new Number { Number1 = 0, Number2 = 7 },
+                new Number { Number1 = 30, Number2 = 5 },
+                new Number { Number1 = 18, Number2 = 17 },
+                new Number { Number1 = 7, Number2 = 9 },
+            };
+
+            Console.WriteLine("Отсортированные по первому элементу по возрастанию:");
+            var collection2resultASC = from c in collection2 orderby c.Number1 ascending select c;
+            foreach (Number c in collection2resultASC)
+            {
+                Console.WriteLine(c.Number1);
+            }
+
+            Console.WriteLine("Отсортированные по второму элементу по убыванию:");
+            var collection2resultDESC = from c in collection2 orderby c.Number2 descending select c;
+            foreach (Number c in collection2resultDESC)
+            {
+                Console.WriteLine(c.Number2);
+            }
+
+            Console.WriteLine("-----|н|-----");
+
+            List<int> arr1 = new List<int> { 8, 11, 36, 4, 12 };
+            List<int> arr2 = new List<int> { 54, 48, 2, 13, 7 };
+            List<int> arr3 = new List<int> { 6, 23, 69, 18, 19 };
+
+            var res = from a in arr1 from b in arr2 from c in arr3 select new { a, b, c };
+
+            foreach (var c in res)
+            {
+                Console.WriteLine(string.Join(", ", c.a, c.b, c.c));
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
