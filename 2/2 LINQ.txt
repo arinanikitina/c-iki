@@ -137,6 +137,28 @@ namespace ConsoleApp7
                 Console.WriteLine("X = " + e.X + " Y = " + e.Y);
             }
 
+            /*Point2[] point2 = new Point2[10];
+            for (int i = 0; i < 10; i++)
+            {
+                point2[i].X2 = i * 2 - i + 2;
+                point2[i].Y2 = i + 3 - i * 0.5 * Math.Sqrt(i);
+            }
+
+            foreach (Point2 e in point2)
+            {
+                Console.WriteLine(e.Y2);
+            }
+
+            Console.WriteLine();
+
+            ArrayList point2array = new ArrayList(point2.OfType<Point2>().OrderBy(x => x.Y2).Select(r2 => new Tuple<double, int>((double)r2.X2, (int)r2.Y2)).ToArray());
+
+            foreach (Tuple<double, int> e in point2array)
+            {
+                Console.WriteLine($"X = {e.Item1} Y = {e.Item2}");
+            }*/
+
+
             Console.WriteLine("-----|д|-----");
             Console.WriteLine("Искомые пары элементов:");
 
