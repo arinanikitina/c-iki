@@ -23,15 +23,15 @@ namespace ConsoleApp7
         {
             int[] numbers = { 1, 4, 9, 5, -6, 0, -3, -8, 2, -5 };
             var maxElement = numbers.Max();
-            Console.WriteLine("-----|а|-----");
-            Console.WriteLine("Максимальный элемент: " + maxElement);
+            Console.WriteLine("-----|Г |-----");
+            Console.WriteLine("ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г»Г© ГЅГ«ГҐГ¬ГҐГ­ГІ: " + maxElement);
 
-            Console.WriteLine("-----|б|-----");
+            Console.WriteLine("-----|ГЎ|-----");
             var maxIndex = Array.IndexOf(numbers, maxElement);
-            Console.WriteLine("Индекс максимального элемента: " + maxIndex);
+            Console.WriteLine("Г€Г­Г¤ГҐГЄГ± Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ : " + maxIndex);
 
-            Console.WriteLine("-----|д|-----");
-            Console.WriteLine("Искомые пары элементов:");
+            Console.WriteLine("-----|Г¤|-----");
+            Console.WriteLine("Г€Г±ГЄГ®Г¬Г»ГҐ ГЇГ Г°Г» ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў:");
 
             int[] array1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             int[] array2 = { 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
@@ -47,25 +47,25 @@ namespace ConsoleApp7
                 Console.WriteLine(string.Join(" ", c.a1, c.a2));
             }
 
-            Console.WriteLine("-----|е|-----");
-            Console.WriteLine("Отсортированный массив слов: ");
+            Console.WriteLine("-----|ГҐ|-----");
+            Console.WriteLine("ГЋГІГ±Г®Г°ГІГЁГ°Г®ГўГ Г­Г­Г»Г© Г¬Г Г±Г±ГЁГў Г±Г«Г®Гў: ");
 
-            string[] words = { "кот", "подорожник", "завод", "ОТвет", "БРДМ-2 РХБ", "соЛод", "питон", "автобОт" };
+            string[] words = { "ГЄГ®ГІ", "ГЇГ®Г¤Г®Г°Г®Г¦Г­ГЁГЄ", "Г§Г ГўГ®Г¤", "ГЋГ’ГўГҐГІ", "ГЃГђГ„ГЊ-2 ГђГ•ГЃ", "Г±Г®Г‹Г®Г¤", "ГЇГЁГІГ®Г­", "Г ГўГІГ®ГЎГЋГІ" };
 
-            IEnumerable<string> wordsResult = from i in words where (i.Contains("от") || i.Contains("оТ") || i.Contains("От") || i.Contains("ОТ")) orderby i.Substring(0, 1) ascending select i;
+            IEnumerable<string> wordsResult = from i in words where (i.Contains("Г®ГІ") || i.Contains("Г®Г’") || i.Contains("ГЋГІ") || i.Contains("ГЋГ’")) orderby i.Substring(0, 1) ascending select i;
             foreach (string s in wordsResult)
             {
                 Console.WriteLine(s);
             }
 
-            Console.WriteLine("-----|ж|-----");
+            Console.WriteLine("-----|Г¦|-----");
 
             string s1 = "rehgsrktje32";
             string s2 = "23ejtkrsgher";
-            Console.WriteLine(s1 == new string(s2.Reverse().ToArray()) ? "Строка s2 является обратной строке s1" : "Строка s2 не является обратной строке s1");
+            Console.WriteLine(s1 == new string(s2.Reverse().ToArray()) ? "Г‘ГІГ°Г®ГЄГ  s2 ГїГўГ«ГїГҐГІГ±Гї Г®ГЎГ°Г ГІГ­Г®Г© Г±ГІГ°Г®ГЄГҐ s1" : "Г‘ГІГ°Г®ГЄГ  s2 Г­ГҐ ГїГўГ«ГїГҐГІГ±Гї Г®ГЎГ°Г ГІГ­Г®Г© Г±ГІГ°Г®ГЄГҐ s1");
 
-            Console.WriteLine("-----|з|-----");
-            Console.WriteLine("Итоговый массив:");
+            Console.WriteLine("-----|Г§|-----");
+            Console.WriteLine("Г€ГІГ®ГЈГ®ГўГ»Г© Г¬Г Г±Г±ГЁГў:");
 
             int[] mass = { 6, 7, 20, 5, 18, 0, 46, 31, 19, 5 };
 
@@ -82,7 +82,7 @@ namespace ConsoleApp7
                 }
             }
 
-            Console.WriteLine("-----|и|-----");
+            Console.WriteLine("-----|ГЁ|-----");
 
             var massiv = new List<int> { 6, 7, 20, 5, 18, 0, 46, 31, 19, 5};
 
@@ -91,17 +91,17 @@ namespace ConsoleApp7
                 Sum = t.Sum(ta => ta),
             }).ToList();
 
-            resultmass.ForEach(r => Console.WriteLine($"Сумма: {r.Sum}"));
+            resultmass.ForEach(r => Console.WriteLine($"Г‘ГіГ¬Г¬Г : {r.Sum}"));
 
-            Console.WriteLine("-----|к|-----");
+            Console.WriteLine("-----|ГЄ|-----");
 
             var arr = new Worker[]
             {
-                new Worker { Name = "Петров", Salary = 100 },
-                new Worker { Name = "Сидоров", Salary = 200 },
-                new Worker { Name = "Петров", Salary = 130 },
-                new Worker { Name = "Иванов", Salary = 170 },
-                new Worker { Name = "Сидоров", Salary = 150 },
+                new Worker { Name = "ГЏГҐГІГ°Г®Гў", Salary = 100 },
+                new Worker { Name = "Г‘ГЁГ¤Г®Г°Г®Гў", Salary = 200 },
+                new Worker { Name = "ГЏГҐГІГ°Г®Гў", Salary = 130 },
+                new Worker { Name = "Г€ГўГ Г­Г®Гў", Salary = 170 },
+                new Worker { Name = "Г‘ГЁГ¤Г®Г°Г®Гў", Salary = 150 },
             };
 
             var arrresult = arr.GroupBy(t => t.Name).Select(t => new
@@ -110,14 +110,14 @@ namespace ConsoleApp7
                 Amount = t.Sum(tn => tn.Salary),
             }).ToList();
 
-            arrresult.ForEach(r => Console.WriteLine($"Имя: {r.Name} | Сумма: {r.Amount}"));
+            arrresult.ForEach(r => Console.WriteLine($"Г€Г¬Гї: {r.Name} | Г‘ГіГ¬Г¬Г : {r.Amount}"));
 
-            Console.WriteLine("-----|л|-----");
+            Console.WriteLine("-----|Г«|-----");
 
             var collection = new List<int> { 1, 2, 4, 1, 4, 2, 2, 1, 5, 7, 9, 5, 5 };
-            Console.WriteLine("Повторяющиеся по 3 раза значения: " + string.Join(" ", collection.GroupBy(x => x).Where (x => x.Count() == 3).Select(x => x.Key)));
+            Console.WriteLine("ГЏГ®ГўГІГ®Г°ГїГѕГ№ГЁГҐГ±Гї ГЇГ® 3 Г°Г Г§Г  Г§Г­Г Г·ГҐГ­ГЁГї: " + string.Join(" ", collection.GroupBy(x => x).Where (x => x.Count() == 3).Select(x => x.Key)));
 
-            Console.WriteLine("-----|м|-----");
+            Console.WriteLine("-----|Г¬|-----");
 
             var collection2 = new Number[]
             {
@@ -128,21 +128,21 @@ namespace ConsoleApp7
                 new Number { Number1 = 7, Number2 = 9 },
             };
 
-            Console.WriteLine("Отсортированные по первому элементу по возрастанию:");
+            Console.WriteLine("ГЋГІГ±Г®Г°ГІГЁГ°Г®ГўГ Г­Г­Г»ГҐ ГЇГ® ГЇГҐГ°ГўГ®Г¬Гі ГЅГ«ГҐГ¬ГҐГ­ГІГі ГЇГ® ГўГ®Г§Г°Г Г±ГІГ Г­ГЁГѕ:");
             var collection2resultASC = from c in collection2 orderby c.Number1 ascending select c;
             foreach (Number c in collection2resultASC)
             {
                 Console.WriteLine(c.Number1);
             }
 
-            Console.WriteLine("Отсортированные по второму элементу по убыванию:");
+            Console.WriteLine("ГЋГІГ±Г®Г°ГІГЁГ°Г®ГўГ Г­Г­Г»ГҐ ГЇГ® ГўГІГ®Г°Г®Г¬Гі ГЅГ«ГҐГ¬ГҐГ­ГІГі ГЇГ® ГіГЎГ»ГўГ Г­ГЁГѕ:");
             var collection2resultDESC = from c in collection2 orderby c.Number2 descending select c;
             foreach (Number c in collection2resultDESC)
             {
                 Console.WriteLine(c.Number2);
             }
 
-            Console.WriteLine("-----|н|-----");
+            Console.WriteLine("-----|Г­|-----");
 
             List<int> arr1 = new List<int> { 8, 11, 36, 4, 12 };
             List<int> arr2 = new List<int> { 54, 48, 2, 13, 7 };
