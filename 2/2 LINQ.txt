@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,22 +17,128 @@ namespace ConsoleApp7
         public int Number1;
         public int Number2;
     }
-    
+
+
+    struct Point
+    {
+        int x, y;
+
+        public void SetXY(int nx, int ny)
+        {
+            x = nx;
+            y = ny;
+        }
+
+        public int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+        public int Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+    }
+    struct Point2
+    {
+        int x;
+        double y;
+
+        public void SetXY2(int nx, double ny)
+        {
+            x = nx;
+            y = ny;
+        }
+
+        public int X2
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+        public double Y2
+        {
+            get { return y; }
+            set { y = value; }
+        }
+    }
+
+    struct P2
+    {
+        double x;
+        int y;
+
+        public P2(double bx, int by)
+        {
+            x = bx;
+            y = by;
+        }
+
+        public double X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+        public int Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
             int[] numbers = { 1, 4, 9, 5, -6, 0, -3, -8, 2, -5 };
             var maxElement = numbers.Max();
-            Console.WriteLine("-----|à|-----");
-            Console.WriteLine("Ìàêñèìàëüíûé ýëåìåíò: " + maxElement);
+            Console.WriteLine("-----|а|-----");
+            Console.WriteLine("Максимальный элемент: " + maxElement);
 
-            Console.WriteLine("-----|á|-----");
+            Console.WriteLine("-----|б|-----");
             var maxIndex = Array.IndexOf(numbers, maxElement);
-            Console.WriteLine("Èíäåêñ ìàêñèìàëüíîãî ýëåìåíòà: " + maxIndex);
+            Console.WriteLine("Индекс максимального элемента: " + maxIndex);
 
-            Console.WriteLine("-----|ä|-----");
-            Console.WriteLine("Èñêîìûå ïàðû ýëåìåíòîâ:");
+            Console.WriteLine("-----|в|-----");
+            Point[] point;
+            point = new Point[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                point[i].X = i * 2;
+                point[i].Y = i + 3;
+            }
+
+            var maxElem = point.Max(x => x.Y);
+            Console.WriteLine("Максимальный элемент: " + maxElem);
+
+            Console.WriteLine("-----|г|-----");
+            Point2[] point2;
+            point2 = new Point2[10];
+            for (int i = 0; i < 10; i++)
+            {
+                point2[i].X2 = i * 2 - i + 2;
+                point2[i].Y2 = i + 3 - i * 0.5 * Math.Sqrt(i);
+            }
+
+            foreach (Point2 e in point2)
+            {
+                Console.WriteLine(e.Y2);
+            }
+
+            Console.WriteLine();
+
+            ArrayList point2array = new ArrayList(point2.OfType<Point2>().OrderBy(x => x.Y2).Select(r2 => new P2((double)r2.X2, (int)r2.Y2)).ToArray());
+
+            foreach (P2 e in point2array)
+            {
+                Console.WriteLine("X = " + e.X + " Y = " + e.Y);
+            }
+
+            Console.WriteLine("-----|д|-----");
+            Console.WriteLine("Искомые пары элементов:");
 
             int[] array1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             int[] array2 = { 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
@@ -41,37 +148,37 @@ namespace ConsoleApp7
                            from a2 in array2
                            where (a2 % 5 == 0)
                            select new { a1, a2 };
-            
+
             foreach (var c in arrayres)
             {
                 Console.WriteLine(string.Join(" ", c.a1, c.a2));
             }
 
-            Console.WriteLine("-----|å|-----");
-            Console.WriteLine("Îòñîðòèðîâàííûé ìàññèâ ñëîâ: ");
+            Console.WriteLine("-----|е|-----");
+            Console.WriteLine("Отсортированный массив слов: ");
 
-            string[] words = { "êîò", "ïîäîðîæíèê", "çàâîä", "ÎÒâåò", "ÁÐÄÌ-2 ÐÕÁ", "ñîËîä", "ïèòîí", "àâòîáÎò" };
+            string[] words = { "кот", "подорожник", "завод", "ОТвет", "БРДМ-2 РХБ", "соЛод", "питон", "автобОт" };
 
-            IEnumerable<string> wordsResult = from i in words where (i.Contains("îò") || i.Contains("îÒ") || i.Contains("Îò") || i.Contains("ÎÒ")) orderby i.Substring(0, 1) ascending select i;
+            IEnumerable<string> wordsResult = from i in words where (i.Contains("от") || i.Contains("оТ") || i.Contains("От") || i.Contains("ОТ")) orderby i.Substring(0, 1) ascending select i;
             foreach (string s in wordsResult)
             {
                 Console.WriteLine(s);
             }
 
-            Console.WriteLine("-----|æ|-----");
+            Console.WriteLine("-----|ж|-----");
 
             string s1 = "rehgsrktje32";
             string s2 = "23ejtkrsgher";
-            Console.WriteLine(s1 == new string(s2.Reverse().ToArray()) ? "Ñòðîêà s2 ÿâëÿåòñÿ îáðàòíîé ñòðîêå s1" : "Ñòðîêà s2 íå ÿâëÿåòñÿ îáðàòíîé ñòðîêå s1");
+            Console.WriteLine(s1 == new string(s2.Reverse().ToArray()) ? "Строка s2 является обратной строке s1" : "Строка s2 не является обратной строке s1");
 
-            Console.WriteLine("-----|ç|-----");
-            Console.WriteLine("Èòîãîâûé ìàññèâ:");
+            Console.WriteLine("-----|з|-----");
+            Console.WriteLine("Итоговый массив:");
 
             int[] mass = { 6, 7, 20, 5, 18, 0, 46, 31, 19, 5 };
 
             var result = from n in mass
-                          orderby n
-                          group n by n % 2;
+                         orderby n
+                         group n by n % 2;
 
             foreach (var q in result)
             {
@@ -82,26 +189,26 @@ namespace ConsoleApp7
                 }
             }
 
-            Console.WriteLine("-----|è|-----");
+            Console.WriteLine("-----|и|-----");
 
-            var massiv = new List<int> { 6, 7, 20, 5, 18, 0, 46, 31, 19, 5};
+            var massiv = new List<int> { 6, 7, 20, 5, 18, 0, 46, 31, 19, 5 };
 
             var resultmass = massiv.GroupBy(t => t % 2).Select(t => new
             {
                 Sum = t.Sum(ta => ta),
             }).ToList();
 
-            resultmass.ForEach(r => Console.WriteLine($"Ñóììà: {r.Sum}"));
+            resultmass.ForEach(r => Console.WriteLine($"Сумма: {r.Sum}"));
 
-            Console.WriteLine("-----|ê|-----");
+            Console.WriteLine("-----|к|-----");
 
             var arr = new Worker[]
             {
-                new Worker { Name = "Ïåòðîâ", Salary = 100 },
-                new Worker { Name = "Ñèäîðîâ", Salary = 200 },
-                new Worker { Name = "Ïåòðîâ", Salary = 130 },
-                new Worker { Name = "Èâàíîâ", Salary = 170 },
-                new Worker { Name = "Ñèäîðîâ", Salary = 150 },
+                new Worker { Name = "Петров", Salary = 100 },
+                new Worker { Name = "Сидоров", Salary = 200 },
+                new Worker { Name = "Петров", Salary = 130 },
+                new Worker { Name = "Иванов", Salary = 170 },
+                new Worker { Name = "Сидоров", Salary = 150 },
             };
 
             var arrresult = arr.GroupBy(t => t.Name).Select(t => new
@@ -110,14 +217,14 @@ namespace ConsoleApp7
                 Amount = t.Sum(tn => tn.Salary),
             }).ToList();
 
-            arrresult.ForEach(r => Console.WriteLine($"Èìÿ: {r.Name} | Ñóììà: {r.Amount}"));
+            arrresult.ForEach(r => Console.WriteLine($"Имя: {r.Name} | Сумма: {r.Amount}"));
 
-            Console.WriteLine("-----|ë|-----");
+            Console.WriteLine("-----|л|-----");
 
             var collection = new List<int> { 1, 2, 4, 1, 4, 2, 2, 1, 5, 7, 9, 5, 5 };
-            Console.WriteLine("Ïîâòîðÿþùèåñÿ ïî 3 ðàçà çíà÷åíèÿ: " + string.Join(" ", collection.GroupBy(x => x).Where (x => x.Count() == 3).Select(x => x.Key)));
+            Console.WriteLine("Повторяющиеся по 3 раза значения: " + string.Join(" ", collection.GroupBy(x => x).Where(x => x.Count() == 3).Select(x => x.Key)));
 
-            Console.WriteLine("-----|ì|-----");
+            Console.WriteLine("-----|м|-----");
 
             var collection2 = new Number[]
             {
@@ -128,21 +235,21 @@ namespace ConsoleApp7
                 new Number { Number1 = 7, Number2 = 9 },
             };
 
-            Console.WriteLine("Îòñîðòèðîâàííûå ïî ïåðâîìó ýëåìåíòó ïî âîçðàñòàíèþ:");
+            Console.WriteLine("Отсортированные по первому элементу по возрастанию:");
             var collection2resultASC = from c in collection2 orderby c.Number1 ascending select c;
             foreach (Number c in collection2resultASC)
             {
                 Console.WriteLine(c.Number1);
             }
 
-            Console.WriteLine("Îòñîðòèðîâàííûå ïî âòîðîìó ýëåìåíòó ïî óáûâàíèþ:");
+            Console.WriteLine("Отсортированные по второму элементу по убыванию:");
             var collection2resultDESC = from c in collection2 orderby c.Number2 descending select c;
             foreach (Number c in collection2resultDESC)
             {
                 Console.WriteLine(c.Number2);
             }
 
-            Console.WriteLine("-----|í|-----");
+            Console.WriteLine("-----|н|-----");
 
             List<int> arr1 = new List<int> { 8, 11, 36, 4, 12 };
             List<int> arr2 = new List<int> { 54, 48, 2, 13, 7 };
@@ -159,3 +266,4 @@ namespace ConsoleApp7
         }
     }
 }
+
